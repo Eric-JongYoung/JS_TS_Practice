@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- UI 만드는법 1. HTML/CSS로 미리 디자인 2. 필요할때 보여달라고 코드짬(JS)  -->
+    <div id="alert" class="alert-box">
+        <p class="title">알림창임</p>
+        <button id="close">x</button>
+    </div>
+    <button onclick="아이디알림창열기('block','아이디 입력하세요')">버튼1</button>
+    <button onclick="아이디알림창열기('block', '비밀번호 입력하세요')">버튼2</button>
+
+    <script>
+        function 아이디알림창열기(구멍, 구멍2){
+            document.getElementById('alert').style.display = 구멍;
+            // class 몇번째 인지 indexing 해줘야함
+            document.getElementsByClassName('title')[0].innerHTML = 구멍2;
+        }
+        function 알림창닫기(구멍){
+            document.getElementById('alert').style.display = 구멍;
+        }
+
+        //event 이용하는거 click, mouseover, scroll 등등..
+        // 콜백함수
+        document.getElementById('close').addEventListener('mouseover', function(){
+            document.getElementById('alert').style.display = 'none';
+        });
+
+    </script>
+</body>
+</html>

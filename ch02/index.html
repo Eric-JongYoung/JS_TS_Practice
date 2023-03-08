@@ -10,18 +10,32 @@
 <body>
     <!-- UI 만드는법 1. HTML/CSS로 미리 디자인 2. 필요할때 보여달라고 코드짬(JS)  -->
     <div id="alert" class="alert-box">알림창 
-        <button onclick="알림창닫기()">x</button>
+        <button onclick="알림창열기('none')">x</button>
     </div>
-    <button onclick="알림창켜기()">버튼</button>
+    <button onclick="알림창열기('block')">버튼</button>
 
     <script>
         // 조작학 html의 하단에 코드짜야 잘됨
-        function 알림창닫기(){
-            document.getElementById('alert').style.display='none';
+        function 알림창열기(파라미터){
+            document.getElementById('alert').style.display=파라미터;
         }
-        function 알림창켜기(){
-            document.getElementById('alert').style.display='block';
+        
+        function plus(구멍){
+            2 + 구멍;
         }
+        plus(1);
+
+        function 알림(구멍, 구멍2){
+            document.getElementById(구멍2).style.display = 구멍2;
+        }
+
+
+        // function 알림창열기(){
+        //     document.getElementById('alert').style.display='block';
+        // }  
+        // function 알림창닫기(){
+        //     document.getElementById('alert').style.display='none';
+        // }  
     </script>
 </body>
 </html>
