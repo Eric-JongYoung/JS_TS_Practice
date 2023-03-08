@@ -1,0 +1,15 @@
+.alert-box{
+    background-color: skyblue;
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    /* 평소에 숨기기 */
+    display: none; 
+}
+.list-group{
+    display: none;
+}
+
+.show{
+    display: block;
+}
