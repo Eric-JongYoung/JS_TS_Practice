@@ -78,8 +78,59 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
+    <div class="percent-line"></div>
   </nav>
+
+  
+
+
   <script>
+    
+    
+    $(window).on('scroll',function(){
+      //진척도 바
+      var 스크롤양 = document.querySelector('html').scrollTop;
+      var 실제높이 = document.querySelector('html').scrollHeight;
+      let now = 스크롤양/실제높이 * 100;
+    
+      
+      $('.percent-line').css('width', now+'%');
+
+    });
+
+// 스크롤바 관련
+
+$(window).on('scroll',function(){
+  if(window.scrollY >100){
+  $('.navbar-brand').css('font-size','20px');
+  } else{
+    $('.navbar-brand').css('font-size','25px');
+  }
+})
+
+
+
+
+// window.addEventListener('scroll',function(){
+//     // 스크롤 위치 
+//     window.scrollY;
+
+//     // 스크롤 위치 고정
+//     // window.scrollTo(0,100);
+// });
+
+// $(window).on('scroll',function(){
+//   //스크롤 위치
+//   $(window).scrollTop();
+//   //스크롤 위치 고정
+//   $(window).scrollTop(100);
+// })
+
+
+
+
+
+// 다크모드
     var cnt = 0;
     $('.badge').on('click', function () {
       cnt++;
@@ -125,13 +176,37 @@
     <button id="login" class="btn btn-danger">로그인</button>
   </div>
 
+  <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+  </div> 
+
+  <script>
+    // 이용약관 다 읽으면 읽었다고 표시하기
+    // div의 스크롤바 내린양 + 눈에 보이는 div의 높이 = div 의 실제 높이
+    $('.lorem').on('scroll', function(){
+      var 스크롤양 = document.querySelector('.lorem').scrollTop;
+      var 실제높이 = document.querySelector('.lorem').scrollHeight;
+      var 높이 = document.querySelector('.lorem').clientHeight;
+      if(스크롤양+높이 == 실제높이 ){
+        alert('다읽었습니다!');
+      }
+    });
+
+    //현재 웹페이지 실제 높이
+    document.querySelector('html').scrollHeight;
+
+    //페이지 보이는 부분 높이
+    document.querySelector('html').scrollHeight;
+
+    // 현재 페이지 스크롤양
+    window.scrollY;
+
+  </script>
+
+
   <div style="height: 1000px;">
 
   </div>
-
-
-
-
 
   <!-- overflow : hidden  넘치는거 숨키기 -->
   <div style="overflow: hidden;">
@@ -196,9 +271,6 @@
 
 
   <script>
-
-
-
 
     document.querySelector('.navbar-toggler').addEventListener('click', function () {
       document.querySelectorAll('.list-group')[0].classList.toggle('show');
