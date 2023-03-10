@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="main.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <title>Hello, world!</title>
+</head>
+
+<body class="" id="darkmode">
+
+  <!-- from 은 서버로 유저정보 전송하려고 쓰는 것 -->
+  <div class="black-bg">
+    <div class="white-bg">
+      <h4>로그인하세요</h4>
+      <form action="success.html">
+        <div class="my-3">
+          <input type="text" class="form-control" id="email">
+        </div>
+        <div class="my-3">
+          <input type="password" class="form-control" id="pass">
+        </div>
+        <button type="submit" class="btn btn-primary" id="send">전송</button>
+        <button type="button" class="btn btn-danger" id="close">닫기</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    $('#send').on('click', function (e) {
+      var 입력값 = document.getElementById('email').value;
+      if (입력값 == '') {
+        alert('아이디 입력안함');
+        e.preventDefault();
+      }
+      if (/\S+@\S+\.\S+/.test(입력값)) {
+
+      } else {
+        alert('이메일형식 아님');
+        e.preventDefault();
+      }
+
+    });
+
+    // 비밀번호 정규식 - 비번에 영어 대문자가 적어도 1개 있는지 검사해봅시다.
+    $('form').on('submit', function (e) {
+
+      var 비번 = document.getElementById('pw').value;
+      if (/[A-Z]/.test(비번) == false) {
+        alert('대문자없는데요')
+      }
+
+    });
+
+    document.getElementById('email').addEventListener('input', function () {
+      console.log('안녕');
+    })
+
+
+  </script>
+
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand">JS shop</span>
+      <span class="badge bg-dark">Dark 🔄</span>
+      <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="percent-line"></div>
+  </nav>
+
+  
+
+
+  <script>
+    
+    
+    $(window).on('scroll',function(){
+      //진척도 바
+      var 스크롤양 = document.querySelector('html').scrollTop;
+      var 실제높이 = document.querySelector('html').scrollHeight;
+      let now = 스크롤양/실제높이 * 100;
+    
+      
+      $('.percent-line').css('width', now+'%');
+
+    });
+
+// 스크롤바 관련
+
+$(window).on('scroll',function(){
+  if(window.scrollY >100){
+  $('.navbar-brand').css('font-size','20px');
+  } else{
+    $('.navbar-brand').css('font-size','25px');
+  }
+})
+
+
+// 다크모드
+    var cnt = 0;
+    $('.badge').on('click', function () {
+      cnt++;
+      // badge 클릭 횟수가 홀수면 내부 글자를 light 로 변경
+      // badge 클릭 횟수가 짝수면 내부 글자를 dark 로 변경
+
+      if (cnt % 2 == 1) {
+        $('.badge').html('Light 🔄');
+        $('#darkmode').removeClass();
+      } else {
+        $('.badge').html('Dark 🔄');
+        $('#darkmode').addClass('dark');
+      }
+    })
+    // 변수의 선언, 할당, 범위
+
+    // var 재선언 o , 재할당 o , 범위 function
+    var name = 'ko';
+
+    function 함수() {
+      var 이름 = 'koo';
+    }
+
+    //모든 중괄호가 범위임
+    // let 재선언 x, 재할당 o, 범위 {}
+    let 옹 = 'wow';
+
+    // const 재선언 x, 재할당 x , 범위 {}
+    const 오우 = 'koo';
+
+  </script>
+
+
+  <ul class="list-group" id="test1">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
+  </ul>
+  <div class="main-bg">
+    <h4>Shirts on Sale</h4>
+    <button id="login" class="btn btn-danger">로그인</button>
+  </div>
+
+  <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae consectetur praesentium exercitationem.
+  </div> 
+
+  <script>
+    // 이용약관 다 읽으면 읽었다고 표시하기
+    // div의 스크롤바 내린양 + 눈에 보이는 div의 높이 = div 의 실제 높이
+    $('.lorem').on('scroll', function(){
+      var 스크롤양 = document.querySelector('.lorem').scrollTop;
+      var 실제높이 = document.querySelector('.lorem').scrollHeight;
+      var 높이 = document.querySelector('.lorem').clientHeight;
+      if(스크롤양+높이 == 실제높이 ){
+        alert('다읽었습니다!');
+      }
+    });
+
+    //현재 웹페이지 실제 높이
+    document.querySelector('html').scrollHeight;
+
+    //페이지 보이는 부분 높이
+    document.querySelector('html').scrollHeight;
+
+    // 현재 페이지 스크롤양
+    window.scrollY;
+
+  </script>
+
+
+  <div style="height: 1000px;">
+
+  </div>
+
+  <!-- overflow : hidden  넘치는거 숨키기 -->
+  <div style="overflow: hidden;">
+    <div class="slide-container">
+      <div class="slide-box">
+        <img src="car1.png">
+      </div>
+      <div class="slide-box">
+        <img src="car2.png">
+      </div>
+      <div class="slide-box">
+        <img src="car3.png">
+      </div>
+    </div>
+  </div>
+  <button class="slide-1">1</button>
+  <button class="slide-2">2</button>
+  <button class="slide-3">3</button>
+  <button class="next">다음</button>
+
+  <script>
+    var 지금사진 = 1;
+    // 다음 버튼 누르면 
+    // 지금 보이는 사진이 1이면 2번 사진 보여주세요
+    $('.next').on('click', function () {
+      if (지금사진 == 1) {
+        $('.slide-container').css('transform', 'translateX(-100vw)');
+        지금사진++;
+      } else if (지금사진 == 2) {        
+        $('.slide-container').css('transform', 'translateX(-200vw)');
+        지금사진++;
+      }
+    });
+
+
+
+    $('.slide-1').on('click', function () {
+      $('.slide-container').css('transform', 'translateX(0vw)');
+    });
+    $('.slide-2').on('click', function () {
+      $('.slide-container').css('transform', 'translateX(-100vw)');
+    });
+    $('.slide-3').on('click', function () {
+      $('.slide-container').css('transform', 'translateX(-200vw)');
+    });
+  </script>
+
+
+
+  <script>
+    //로그인 
+    $('#login').on('click', function () {
+      $('.black-bg').addClass('show-modal');
+    })
+
+    $('#close').on('click', function () {
+      $('.black-bg').removeClass('show-modal');
+    })
+
+  </script>
+
+
+
+  <script>
+
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+      document.querySelectorAll('.list-group')[0].classList.toggle('show');
+    })
+
+  </script>
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>
