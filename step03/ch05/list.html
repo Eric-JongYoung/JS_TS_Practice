@@ -46,23 +46,57 @@
       </div>
     </div>
   </div>
-  
+
   <script>
     var products = [
-      { id : 0, price : 70000, title : 'Blossom Dress' },
-      { id : 1, price : 50000, title : 'Springfield Shirt' },
-      { id : 2, price : 60000, title : 'Black Monastery' }
+      { id: 0, price: 70000, title: 'Blossom Dress' },
+      { id: 1, price: 50000, title: 'Springfield Shirt' },
+      { id: 2, price: 60000, title: 'Black Monastery' }
     ];
 
-    for(var i = 0 ; i < 3 ; i++){
-    document.querySelectorAll('.card-body h5')[i].innerHTML = products[i].title;
-    document.querySelectorAll('.card-body p')[i].innerHTML = '₩'+ products[i].price;
+    for (var i = 0; i < 3; i++) {
+      document.querySelectorAll('.card-body h5')[i].innerHTML = products[i].title;
+      document.querySelectorAll('.card-body p')[i].innerHTML = '₩' + products[i].price;
     }
-    
-    // 문자 중간에 변수 넣는 방법
-    var a = '안녕';
-    `문자${a}문자`
-  </script> 
+
+  </script>
+
+  <script>
+
+    // ajax get 요청 - jQuery 이용
+    $.get('https://codingapple1.github.io/price.json')
+      .done(function (data) {
+        console.log(data);
+      })
+      .fail(function () {
+        console.log('실패함');
+      })
+
+    // 쌩 js 방법
+    fetch('https://codingapple1.github.io/price.json')
+      .then(res => res.json()) // 받아온 json 을 object 로 바꿔주는 기능
+      .then(function (data) {
+        console.log(data)
+      })
+      .catch(function (error) {
+        console.log('실패함')
+      });
+
+
+
+    // ajax post 요청
+    // $.post('https://codingapple1.github.io/hello.txt', {name : 'ko'})
+    //   .done(function(data){
+    //     console.log(data);
+    // })
+    // .fail(function(){
+    //   console.log('post 요청 실패');
+    // })
+
+
+
+
+  </script>
 
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
