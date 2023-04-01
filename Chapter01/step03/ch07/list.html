@@ -22,12 +22,19 @@
   <div class="container">
     <div class="row">
 
-
     </div>
   </div>
 
   <div class="container my-3">
     <button id="price" class="btn btn-danger">가격 순 정렬</button>
+  </div>
+
+  <div class="container my-3">
+    <button id="sort1" class="btn btn-danger">다나가 순 정렬</button>
+  </div>
+
+  <div class="container my-3">
+    <button id="filter" class="btn btn-danger">6만원 이하</button>
   </div>
 
   <div class="container">
@@ -59,11 +66,30 @@
       { id: 2, price: 60000, title: 'Black Monastery' }
     ];
 
-    // 가격순 정렬
-    $('#price').click(function(){
-      products.sort(function(a,b){
-      return a.price - b.price
-      });
+
+    // 가, 다 일경우 양수
+    // 다, 나 일경우 음수
+    // 가, 나 일경우 양수
+    var arr = ['가','다','나'];
+    arr.sort(function(a, b) {
+      if( a < b ) {
+        return 1;
+      } else {
+        return -1;
+      } 
+    });
+    console.log(arr);
+
+    // 다나가 순 정렬
+    $('#sort1').click(function() {
+      products.sort(function(a , b) {
+        if(a.title < b.title) {
+          return 1;
+        } else  {
+          return -1;
+        }
+      })
+      
       $('.row').html('');
       products.forEach((a, i) => {
       var 템플릿 =
@@ -73,7 +99,27 @@
           <p>가격 : ${a.price}</p>
         </div>`;
       $('.row').append(템플릿);
-    })
+     })
+    });
+
+
+    // 가격순 정렬
+    $('#price').click(function(){
+      products.sort(function(a,b){
+        return a.price - b.price
+      });
+      
+      $('.row').html('');
+
+      products.forEach((a, i) => {
+      var 템플릿 =
+        `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+        </div>`;
+      $('.row').append(템플릿);
+      })
     })
 
     // filter 함수
@@ -94,6 +140,30 @@
     });
     console.log(새어레이2);
   
+    //6만원 이하 상품 보기
+    $('#filter').click(function() {
+      var newProduct = products.filter(function(a){
+        return a.price <= 60000;
+      });
+      
+      //같은 filter arrow function
+      var newProduct2 = products.filter((a) => a.price <= 60000);
+      
+
+
+      $('.row').html('');
+
+      newProduct.forEach((a, i) => {
+      var 템플릿 =
+        `<div class="col-sm-4">
+          <img src="https://via.placeholder.com/600" class="w-100">
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+        </div>`;
+      $('.row').append(템플릿);
+      })
+    });
+
 
     products.forEach((a, i) => {
       var 템플릿 =
