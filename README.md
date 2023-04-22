@@ -1,10 +1,10 @@
 
 
-## Chapter 1️⃣
+## [01] Basic
 ### - Basic JavaScript
 
 
-## Chapter 2️⃣
+## [02] ES6
 ### - ES6 JavaScript
 
 <hr>
