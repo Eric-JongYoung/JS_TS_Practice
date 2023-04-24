@@ -1,6 +1,6 @@
   
   
-  'use strict';
+  // 'use strict';
 
   // this의 첫번째 뜻
   console.log(this) // window
@@ -51,4 +51,51 @@
   함수();
   window.함수();
 
+// this의 3번째 의미 - constructor 
+  function 기계()  {
+    this.이름 = 'ko';
+  }
 
+  var 오브젝트5 = new 기계();
+
+
+  // this의 4번째 뜻 - e.currentTarget
+  document.getElementById('버튼').addEventListener('click', 
+  function(e){
+    //this; //e.curruentTarget;
+    console.log(this);
+    console.log(e.currentTarget);
+
+    var 어레이 = [1, 2, 3];
+    어레이.forEach(function(a){
+      console.log(this); // window 로 나옴
+    });
+  })
+
+  console.log('오브젝트6 테스트')
+
+  var 오브젝트6 = {
+    이름들 : ['김','이','박'],
+    함수 : function(){
+      console.log(this); // 오브젝트6 가 출력
+      오브젝트6.이름들.forEach(function(){
+        console.log(this); // window
+      })
+    }
+  }
+  오브젝트6.함수();
+
+  console.log('오브젝트7 테스트')
+
+  // arrow function 특징 : 내부의 this값을 변화시키지 않음. (외부 this 값 그대로 사용 가능)
+
+  var 오브젝트7 = {
+    이름들 : ['김','이','박'],
+    함수 : function(){
+      console.log(this); // 오브젝트7 가 출력
+      오브젝트6.이름들.forEach(()=>{
+        console.log(this); // 오브젝트7 가 출력
+      })
+    }
+  }
+  오브젝트7.함수();
