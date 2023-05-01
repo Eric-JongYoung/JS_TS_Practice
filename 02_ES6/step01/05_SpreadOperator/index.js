@@ -92,5 +92,7 @@ var person2 = {
   name : 'eric'
 }
 
+// apply / call 비슷함
+// 근데 apply는 파라미터를 array 형태로 집어넣기 가능
 person.인사.apply(person2, [1,2]);
 person.인사.call(person2, 1, 2);
