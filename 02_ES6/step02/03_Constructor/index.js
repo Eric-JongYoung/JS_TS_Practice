@@ -58,3 +58,15 @@ function Product(상품명, 가격){
 
 var product1 = new Product('shirts', 50000);
 var product2 = new Product('pants', 60000);
+
+
+function 사람(이름, 나이){
+  this.name = 이름;
+  this.age = 나이;
+  this.sayHi = function(){
+    console.log('안녕 내 이름은 '+ this.name +'이고, 나이는 '+ this.age + '이야~');
+  }
+}
+var 사람1 = new 사람('kim',20);
+
+사람1.sayHi();
