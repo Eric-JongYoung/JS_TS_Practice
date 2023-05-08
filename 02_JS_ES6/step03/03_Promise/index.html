@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <img id="test" src="https://codingapple1.github.io/kona.jpg"> 
+  <script>
+    // 연습문제
+
+    var 이미지로딩 = new Promise(function(성공, 실패){
+      var img = document.querySelector('#test');
+      img.addEventListener('load', function(){
+        성공();
+      });
+      img.addEventListener('error', function(){
+        실패();
+      });
+    });
+
+    이미지로딩.then(function(){
+      console.log('로딩성공');
+    }).catch(function(){
+      console.log('로딩실패');
+    });
+
+    // ajax Promise 연습문제
+    var ajax프로미스 = new Promise((성공, 실패) =>{
+      $.get('https://codingapple1.github.io/hello.txt')
+        .done(function(결과){
+          성공(결과);
+      });
+    })
+
+    ajax프로미스.then(function(결과){
+      console.log(결과);
+    }).catch(function(){
+      console.log('실패!');
+    });
+
+    // ajax Promise 연습문제2
+    var ajax프로미스2 = new Promise((성공, 실패) =>{
+      $.get('https://codingapple1.github.io/hello.txt')
+        .done(function(결과){
+          성공(결과);
+      });
+    })
+
+    ajax프로미스2.then(function(결과){
+      console.log(결과);
+      return new Promise((성공, 실패) =>{
+        $.get('https://codingapple1.github.io/hello2.txt')
+          .done(function(결과){
+            성공(결과);
+        });
+      })
+    }).then(function(결과){
+      console.log(결과)
+    })
+
+    function ajax해주는함수(URL){
+      return new Promise((성공, 실패)=>{
+        $.get(URL)
+          .done(function(결과){
+            성공(결과);
+        })
+      })
+    }
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>
