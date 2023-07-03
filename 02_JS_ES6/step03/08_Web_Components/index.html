@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+  <custom-input name="바보"></custom-input>
+  <hr>
+  <custom-input name="몽충이"></custom-input>
+  <hr>
+  <custom2-input></custom2-input>
+  <hr>
+  <custom3-input name="바보2"></custom2-input>
+
+  <script>
+    // cutom의 장점은 html 중복제거, 다른페이지에서 재활용가능
+
+    class 클래스 extends HTMLElement {
+      connectedCallback() {
+        let name = this.getAttribute('name');
+        this.innerHTML = `<label>이름을 입력하시오 ${name}</label><input>`;
+      }
+    }
+    customElements.define("custom-input", 클래스);
+
+    class 클래스2 extends HTMLElement {
+      connectedCallback() {
+        let 변수 = document.createElement('label');
+        this.appendChild(변수);
+        this.innerHTML = `<label>이메일을 입력하시오</label><input>`;
+      }
+    }
+    customElements.define("custom2-input", 클래스2);
+
+
+    //attribute가 변경될 때 특정 코드 실행도 가능
+    class 클래스3 extends HTMLElement {
+      connectedCallback() {
+        this.innerHTML = `<label>이름을 입력하시오</label><input>`;
+      }
+      static get observedAttributes() {
+       return ['name']
+      }
+        attributeChangedCallback() {
+          console.log(this.getAttribute('name'));
+      }
+    }
+    customElements.define("custom3-input", 클래스3);
+    
+
+  </script>
+</body>
+</html>
